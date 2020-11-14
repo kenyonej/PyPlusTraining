@@ -1,0 +1,26 @@
+nxos1
+
+interface {{ interface }}
+ ip address {{ ipv4_address }}/{{ ipv4_netmask }}
+
+router bgp {{ local_as }}
+{%- if iBGP == True %}
+ neighbor {{ peer_ip }} remote-as {{ local_as }}
+{%- else %}
+ neighbor {{ peer_ip }} remote-as {{ remote_as }}
+{%- endif %}
+  address-family ipv4 unicast
+ 
+
+nxos2
+
+interface {{ interface }}
+ ip address {{ ipv4_address }}/{{ipv4_netmask }}
+
+router bgp {{ local_as }}
+{%- if iBGP == True %}
+ neighbor {{ peer_ip }} remote-as {{ local_as }}
+{%- else %}
+ neighbor {{ peer_ip }} remote-as {{ remote_as }}
+{%- endif %}
+  address-family ipv4 unicast
